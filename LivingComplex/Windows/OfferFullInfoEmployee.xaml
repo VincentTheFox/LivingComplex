@@ -1,0 +1,35 @@
+﻿<Window x:Class="LivingComplex.Windows.OfferFullInfoEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LivingComplex.Windows"
+        mc:Ignorable="d"
+        Title="Информация о заявке" Height="450" Width="400" Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" Background="#f1f1f1" FontSize="14" FontFamily="Georgia">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.RowSpan="3">
+            <Image Source="/Resources/Yellow.png" HorizontalAlignment="Right" Opacity="0.795"/>
+        </Grid>
+        <Label Content="Информация о заявке" Grid.Row="0" HorizontalAlignment="Center" FontSize="22"/>
+        <Grid  Grid.Row="1">
+            <StackPanel >
+                <Label Content="Отправлена:"/>
+                <Label x:Name="Address" />
+                <Label x:Name="CreateData" />
+                <Label x:Name="ServiceType"/>
+                <Label x:Name="OfferStatus"/>
+                <ComboBox x:Name="OfferStatusBox" SelectedItem="{Binding OfferStatus}"/>
+                <Label Content="Описание проблемы"/>
+                <TextBlock x:Name="ShortDescription_text" TextWrapping="Wrap"/>
+                
+            </StackPanel>
+        </Grid>
+        <Button x:Name="Back_btn" Click="Back_btn_Click" Content="Назад" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold"></Button>
+        <Button x:Name="ChangStatusButm" Click="ChangStatusButm_Click" Content="Изменить статус" Grid.Row="2" HorizontalAlignment="Right" Background="#FF2A4276" Foreground="White" FontWeight="Bold" Width="150"></Button>
+    </Grid>
+</Window>

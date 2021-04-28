@@ -1,0 +1,60 @@
+﻿<Window x:Class="LivingComplex.Windows.TenantFullInfoEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LivingComplex.Windows"
+        mc:Ignorable="d"
+        Title="Полная информация о жильце" Height="450" Width="450" Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" Background="#f1f1f1" FontSize="14" FontFamily="Georgia" >
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.RowSpan="3">
+            <Image Source="/Resources/Yellow.png" HorizontalAlignment="Right" Opacity="0.795"/>
+        </Grid>
+        <Label Content="Информация о жильце" Grid.Row="0" HorizontalAlignment="Center" FontSize="20"/>
+        <Grid  Grid.Row="1">
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Label Content="ФИО:"/>
+                <TextBox x:Name="FullName_label" />
+                <Label Content="Пол:"/>
+                <TextBox x:Name="Gender_label" />
+                <Label Content="Возраст:"/>
+                <TextBox x:Name="Age_label" />
+                <Label Content="Дата рождения:"/>
+                <TextBox x:Name="BirthDayDate_label" Text=""/>
+                <Label Content ="Паспортные данные"/>
+                <Label Content="Серия паспорта"/>
+                <TextBox x:Name="PassportSerial"/>
+                <Label Content="Номер паспорта"/>
+                <TextBox x:Name="PassportNumber"/>
+                <CheckBox x:Name="ChangeBox" Content="Изменить данные"
+                          Checked="ChangeBox_Checked"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <Label Content="Телефон:"/>
+                <TextBox x:Name="Phone_label" />
+                <Label Content="Почта:"/>
+                <TextBox x:Name="Email_label" />
+                <Label Content="Статус:"/>
+                <Label x:Name="TenantStatusLabel_label"/>
+                <ComboBox x:Name="StatusBox" SelectedItem="{Binding StatusBox}"/>
+                <Label Content="СНИЛС"/>
+                <TextBox x:Name="Snils_label" />
+                <Label Content="ИНН"/>
+                <TextBox x:Name="INN_label" />
+            </StackPanel>
+        </Grid>
+        <Button x:Name="Back_btn" Click="Back_btn_Click" Content="Назад" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="#f1f1f1" FontWeight="Bold" ></Button>
+        <Button x:Name="Change_Button" Click="Change_Button_Click" Content="Изменить" Grid.Row="2" HorizontalAlignment="Right" Background="#FF2A4276" Foreground="#f1f1f1" FontWeight="Bold" IsEnabled="False"></Button>
+    </Grid>
+</Window>

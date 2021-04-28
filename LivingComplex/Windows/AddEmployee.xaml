@@ -1,0 +1,143 @@
+﻿<Window x:Class="LivingComplex.Windows.AddEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LivingComplex.Windows"
+        mc:Ignorable="d"
+        Title="AddEmployee" Height="600" Width="800">
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.05*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0"
+               Grid.Column="1"
+               Content="Добавление жильца"
+               VerticalContentAlignment="Center"
+               HorizontalAlignment="Center"
+               FontSize="20"/>
+        <Grid Grid.RowSpan="3" Grid.ColumnSpan="5">
+            <Image Source="/Resources/Yellow.png" HorizontalAlignment="Right"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="3">
+            <StackPanel Grid.Column="2">
+
+                <Label Content="Должность"/>
+                <ComboBox x:Name="EmployeePostCombobox" 
+                          SelectedItem="{Binding EmployeePostAdd, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="Ставка"/>
+                <ComboBox x:Name="RateFactorBox" 
+                          SelectedItem="{Binding RateFactorAdd, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="Телефон"/>
+                <TextBox x:Name="PhoneBox"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Text=""
+                         />
+                <Label Content="Почта"/>
+                <TextBox x:Name="EmailBox"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Text=""
+                         />
+                <Label Content="Серия паспорта"/>
+                <TextBox x:Name="PassportSerialBox"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Text=""
+                         />
+                <Label Content="Номер паспорта"/>
+                <TextBox x:Name="PassportNumberBox"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Text=""
+                         />
+                <Label Content="СНИЛС"/>
+                <TextBox x:Name="SNILSBox"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Text=""
+                         />
+                <Label Content="ИНН"/>
+                <TextBox x:Name="INN"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Text=""/>
+                <Label Content="Номер договора"/>
+                <TextBox x:Name="ContractNumber"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Text=""/>
+
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            
+            
+            <StackPanel Grid.Column="0">
+                <Label Content="Имя"/>
+                <TextBox x:Name="FirstNameBox"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Text=""
+                         />
+                <Label Content="Фамилия"/>
+                <TextBox x:Name="LastNameBox"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Text=""
+                         />
+                <Label Content="Отчество"/>
+                <TextBox x:Name="Patronymicbox"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Text=""
+                         />
+                <Label Content="Пол"/>
+                <ComboBox x:Name="GenderBox"
+                          SelectedItem="{Binding GenderAdd, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="Возраст"/>
+                <TextBox x:Name="Age"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Text=""
+                         />
+                <Label Content="Дата рождения"/>
+                <DatePicker x:Name="BirthdayDatePick"/>
+                <Label Content="Дата начала работы"/>
+                <DatePicker x:Name="WorkingStartDatePick"/>
+            </StackPanel>
+            
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AddEmployeeButton"
+                    Background="#FF2A4276"
+                    Foreground="#f4f4f4"
+                    Content="Добавить"
+                    Click="AddEmployeeButton_Click"
+                    FontWeight="Bold"/>
+            <Button x:Name="Back_button"
+                    Background="#FF2A4276"
+                    Foreground="#f4f4f4"
+                    Content="Назад"
+                    Grid.Column="1"
+                    Click="Back_button_Click"
+                    FontWeight="Bold"/>
+        </Grid>
+    </Grid>
+</Window>

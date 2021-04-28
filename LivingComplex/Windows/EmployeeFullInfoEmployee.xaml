@@ -1,0 +1,93 @@
+﻿<Window x:Class="LivingComplex.Windows.EmployeeFullInfoEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LivingComplex.Windows"
+        mc:Ignorable="d"
+        Title="Полная информация о работнике" Height="550" Width="450" Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" Background="#f1f1f1" FontSize="14" FontFamily="Georgia">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.RowSpan="3">
+            <Image Source="/Resources/Yellow.png" HorizontalAlignment="Right" Opacity="0.795"/>
+        </Grid>
+        <Label Content="Информация о работнике" Grid.Row="0" HorizontalAlignment="Center" FontSize="20"/>
+        <Grid  Grid.Row="1">
+            
+            <Grid.ColumnDefinitions>
+                
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.76*"/>
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <Label Content="Номер работника"/>
+                    <TextBox x:Name="EmployeeID"/>
+                    <Label Content="ФИО:"/>
+                    <TextBox x:Name="FullName_label"/>
+                    <Label Content="Пол:"/>
+                    <TextBox x:Name="Gender_label"/>
+                    <Label Content="Возраст:"/>
+                    <TextBox x:Name="Age_label"/>
+                    <Label Content="Дата рождения:"/>
+                    <TextBox x:Name="BirthdayDate_label"/>
+
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <Label Content="Должность:"/>
+                    <Label x:Name="Post_Label"/>
+                    <ComboBox x:Name="PostBox" SelectedItem="{Binding EmployeePosts}"/>
+                    <Label Content="Ставка:"/>
+                    <Label x:Name="RateFactor"/>
+                    <ComboBox x:Name="RateBox" SelectedItem="{Binding RateBox}"/>
+                    <CheckBox x:Name="ChangeBox" Checked="ChangeBox_Checked" Content="Изменить данные"></CheckBox>
+                </StackPanel>
+
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.4*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="2">
+
+                    <Label Content="Телефон:"/>
+                    <TextBox x:Name="Phone_label"/>
+                    <Label Content="Почта:"/>
+                    <TextBox x:Name="Email_label"/>
+                    <Label Content="СНИЛС:"/>
+                    <TextBox x:Name="Snils_label"/>
+                    <Label Content="ИНН"/>
+                    <TextBox x:Name="INN_label"/>
+                    <Label Content ="Паспортные данные"/>
+                    <Label Content="Серия паспорта"/>
+                    <TextBox x:Name="PassportSerial"/>
+                    <Label Content="Номер паспорта"/>
+                    <TextBox x:Name="PassportNumber"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="2">
+                        <Label Content="Дата начала работы:"/>
+                        <TextBox x:Name="WorkingStartDate"/>
+                        <Label Content="Номер договора найма:"/>
+                        <TextBox x:Name="ContractNumber"/>
+
+                </StackPanel>
+                
+            </Grid>
+            
+            
+            
+        </Grid>
+        <Button x:Name="Back_Button" Click="Back_Button_Click" Content="Назад" Grid.Row="2" HorizontalAlignment="Left" Foreground="#f1f1f1" FontWeight="Bold" Background="#FF2A4276"></Button>
+        <Button x:Name="Change_Button" Click="Change_Button_Click" Content="Изменить" Grid.Row="2" HorizontalAlignment="Right" Background="#FF2A4276" Foreground="#f1f1f1" FontWeight="Bold" IsEnabled="False"></Button>
+    </Grid>
+</Window>
