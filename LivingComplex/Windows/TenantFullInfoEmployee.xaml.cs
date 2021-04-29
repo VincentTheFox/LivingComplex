@@ -145,9 +145,6 @@ namespace LivingComplex.Windows
             Update();
         }
 
-        private void Change_Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }
