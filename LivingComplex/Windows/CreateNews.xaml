@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LivingComplex.Windows"
         mc:Ignorable="d"
-        Title="CreateNews" Height="450" Width="400">
+        Title="CreateNews" Height="450" Width="400" ResizeMode="NoResize" FontSize="14" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

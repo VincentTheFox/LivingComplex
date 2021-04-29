@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LivingComplex.Windows"
         mc:Ignorable="d"
-        Title="AddEmployee" Height="600" Width="800">
+        Title="AddEmployee" Height="600" Width="800" ResizeMode="NoResize" FontSize="14">
     <Grid>
         
         <Grid.ColumnDefinitions>
@@ -22,8 +22,8 @@
         </Grid.RowDefinitions>
         
         <Label Grid.Row="0"
-               Grid.Column="1"
-               Content="Добавление жильца"
+               Grid.ColumnSpan="5"
+               Content="Добавление работника"
                VerticalContentAlignment="Center"
                HorizontalAlignment="Center"
                FontSize="20"/>
@@ -120,24 +120,21 @@
             </StackPanel>
             
         </Grid>
-        <Grid Grid.Row="2" Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="AddEmployeeButton"
+        <Button x:Name="AddEmployeeButton"
                     Background="#FF2A4276"
                     Foreground="#f4f4f4"
                     Content="Добавить"
+                    Grid.Column="1"
+                    Grid.Row="2"
                     Click="AddEmployeeButton_Click"
                     FontWeight="Bold"/>
-            <Button x:Name="Back_button"
+        <Button x:Name="Back_button"
                     Background="#FF2A4276"
                     Foreground="#f4f4f4"
                     Content="Назад"
-                    Grid.Column="1"
+                    Grid.Column="3"
+                    Grid.Row="2"
                     Click="Back_button_Click"
                     FontWeight="Bold"/>
-        </Grid>
     </Grid>
 </Window>

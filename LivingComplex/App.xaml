@@ -37,5 +37,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="Window">
+            <Setter Property="ResizeMode" Value="NoResize"/>
+        </Style>
     </Application.Resources>
 </Application>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LivingComplex.Windows"
         mc:Ignorable="d"
-        Title="Окно работника" Height="650" Width="1000" Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
+        Title="Окно работника" Height="650" Width="1000" Icon="/Resources/icon.png" ResizeMode="NoResize" FontSize="14" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
     <Grid Background="#f4f4f4">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LivingComplex.Windows"
         mc:Ignorable="d"
-        Title="Добавление жильца" Height="890" Width="400"  Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" FontSize="16" FontFamily="Georgia" >
+        Title="Добавление жильца" Height="600" Width="800" ResizeMode="NoResize" FontSize="14" Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
@@ -23,10 +23,17 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition/>
+                <ColumnDefinition Width="0.05*"/>
+                <ColumnDefinition/>
                 <ColumnDefinition Width="0.1*"/>
-                
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
+            
+            <StackPanel Grid.Column="1" Grid.Row="1">
                 <Label Content="Имя"/>
                 <TextBox x:Name="FirstNameBox"
                          Width="200"
@@ -62,6 +69,11 @@
                          HorizontalAlignment="Left"
                          Text=""
                          />
+                
+               
+                
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="3">
                 <Label Content="Статус"/>
                 <ComboBox x:Name="TenantStatusCombobox" 
                           SelectedItem="{Binding TenantStatusAdd, UpdateSourceTrigger=PropertyChanged}"/>
@@ -101,7 +113,6 @@
                          Width="200"
                          HorizontalAlignment="Left"
                          Text=""/>
-                
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">

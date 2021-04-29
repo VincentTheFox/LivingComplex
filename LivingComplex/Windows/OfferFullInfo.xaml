@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LivingComplex.Windows"
         mc:Ignorable="d"
-        Title="Информация о заявке" Height="450" Width="400" Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" Background="#f1f1f1" FontSize="14" FontFamily="Georgia">
+        Title="Информация о заявке" Height="450" Width="400" Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"  FontSize="14" Background="#f1f1f1">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
