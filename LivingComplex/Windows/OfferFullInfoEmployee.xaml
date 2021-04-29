@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LivingComplex.Windows"
         mc:Ignorable="d"
-        Title="Информация о заявке" Height="450" Width="400" Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" Background="#f1f1f1" FontSize="14" FontFamily="Georgia">
+        Title="Информация о заявке" Height="450" Width="400" Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" Background="#f1f1f1">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -17,9 +17,18 @@
         </Grid>
         <Label Content="Информация о заявке" Grid.Row="0" HorizontalAlignment="Center" FontSize="22"/>
         <Grid  Grid.Row="1">
-            <StackPanel >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.1*"/>
+            </Grid.ColumnDefinitions>
+            <Border Width="100" Height="100" Grid.Column="1" Margin="217,10,10,216">
+                <Image x:Name="OfferImage"/>
+            </Border>
+            <StackPanel Grid.Column="1" >
                 <Label Content="Отправлена:"/>
                 <Label x:Name="Address" />
+                <Label Content=" "/>
                 <Label x:Name="CreateData" />
                 <Label x:Name="ServiceType"/>
                 <Label x:Name="OfferStatus"/>

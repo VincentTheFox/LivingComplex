@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,7 +54,19 @@ namespace LivingComplex.Windows
             var statuses = CN.c.TaskStatus.Select(i => i.TaskStatusName).ToList();
             statuses.Insert(0, "Не менять");
             OfferStatusBox.ItemsSource = statuses;
-
+            if (offer.Photo != null)
+            {
+                using (MemoryStream stream = new MemoryStream(CN.c.Offers.Where(i => i.idOffer == offer.idOffer).Select(i => i.Photo).FirstOrDefault()))
+                {
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                    bitmapImage.StreamSource = stream;
+                    bitmapImage.EndInit();
+                    OfferImage.Source = bitmapImage;
+                }
+            }
 
 
         }

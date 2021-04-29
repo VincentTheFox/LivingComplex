@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +49,19 @@ namespace LivingComplex.Windows
                 from Offers in CN.c.Offers
                 where Offers.idOffer == offer.idOffer
                 select Offers.CreateDate;
+            if (offer.Photo != null)
+            {
+                using (MemoryStream stream = new MemoryStream(CN.c.Offers.Where(i => i.idOffer == offer.idOffer).Select(i => i.Photo).FirstOrDefault()))
+                {
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                    bitmapImage.StreamSource = stream;
+                    bitmapImage.EndInit();
+                    OfferImage.Source = bitmapImage;
+                }
+            }
             CreateData.Content = "Дата заявки: " + DateTimeQuery.First().ToString();
             Address.Content = GetAddress(offer);
 

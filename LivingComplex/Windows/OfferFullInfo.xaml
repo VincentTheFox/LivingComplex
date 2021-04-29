@@ -17,18 +17,27 @@
         </Grid>
         <Label Content="Информация о заявке" Grid.Row="0" HorizontalAlignment="Center" FontSize="22"/>
         <Grid  Grid.Row="1">
-            <StackPanel >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.1*"/>
+            </Grid.ColumnDefinitions>
+            <Border Width="100" Height="100" Grid.Column="1" Margin="217,10,10,216">
+                <Image x:Name="OfferImage"/>
+            </Border>
+            <StackPanel Grid.Column="1" >
                 <Label Content="Отправлена:"/>
                 <Label x:Name="Address" />
+                <Label Content=" "/>
                 <Label x:Name="CreateData" />
                 <Label x:Name="ServiceType"/>
                 <Label x:Name="OfferStatus"/>
                 <Label Content="Описание проблемы"/>
                 <TextBlock x:Name="ShortDescription_text" TextWrapping="Wrap"/>
-                
+
             </StackPanel>
         </Grid>
         <Button x:Name="Back_btn" Click="Back_btn_Click" Content="Назад" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold"></Button>
-        
+
     </Grid>
 </Window>
