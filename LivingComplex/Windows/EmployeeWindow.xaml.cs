@@ -39,7 +39,7 @@ namespace LivingComplex.Windows
         /// </summary>
         public string Search { get; set; } = "";
         public string ServiceFilter { get; set; } = "Все услуги";
-        public string OfferDate { get; set; } = "Без сортировки";
+        public string OffersDate { get; set; } = "Без сортировки";
         public string SortType { get; set; } = "Отсутствует";
         public string SortTypeOffers { get; set; } = "Отсутствует";
         public string SortPole { get; set; } = "Без сортировки";
@@ -81,6 +81,12 @@ namespace LivingComplex.Windows
                 "По убыванию",
                 
             };
+            var SortTypeListOffers = new List<string> {
+                "Отсутствует",
+                "По возрастанию",
+                "По убыванию",
+
+            };
             SortPoleCombobox.ItemsSource = new List<string>
             {
                 "Без сортировки",
@@ -95,7 +101,9 @@ namespace LivingComplex.Windows
             filter.Insert(0, "Все услуги");
             ServiceFilterBox.ItemsSource = filter;
             SortTypeComboBox.ItemsSource = SortTypeList.ToList();
-            Update();
+            SortTypeOffersComboBox.ItemsSource = SortTypeListOffers.ToList();
+            OffersDateComboBox.ItemsSource = offerdatelist.ToList();
+            
 
         }
         /// <summary>
@@ -208,22 +216,75 @@ namespace LivingComplex.Windows
             else
             {
                 tenantsource = tenantsource.ToList();
+                SortPoleCombobox.IsEnabled = false;
             }
             /// <summary>
             /// Filtering for Offerstab and table offers
             /// <summary>
             if (ServiceFilter != "Все услуги")
             {
-                offerssource = offerssource.Where(i => i.Service1.ServiceName == ServiceFilter && i.TaskStatus.idTaskStatus == 2).ToList();
+                offerssource = offerssource.Where(i => i.Service1.ServiceName == ServiceFilter).ToList();
                 
             }
             else
             {
-                offerssource = c.Offers.Where(i=>i.TaskStatus.idTaskStatus == 2 || i.TaskStatus.idTaskStatus == 3).OrderByDescending(i=>i.idOffer).ToList();
+                offerssource = c.Offers.OrderByDescending(i=>i.idOffer).ToList();
             }
-            
-           
-            
+
+            if(OfferDone.IsChecked == true)
+            {
+                offerssource = offerssource.Where(i => i.StatusID == 4).OrderByDescending(i => i.idOffer).ToList();
+            }
+            else if (OfferNotDone.IsChecked == true)
+            {
+                offerssource = offerssource.Where(i => i.StatusID == 3).OrderByDescending(i => i.idOffer).ToList();
+            }
+            else if (OfferOnWork.IsChecked == true)
+            {
+                offerssource = offerssource.Where(i => i.StatusID == 1).OrderByDescending(i => i.idOffer).ToList();
+            }
+            else if (OfferGot.IsChecked == true)
+            {
+                offerssource = offerssource.Where(i => i.StatusID == 2).OrderByDescending(i => i.idOffer).ToList();
+            }
+
+            if (SortTypeOffers != "Отствутсвует")
+            {
+                OffersDateComboBox.IsEnabled = true;
+                var ascending = SortType == "По возрастанию";
+                switch (OffersDate)
+                {
+                    case "Дата создания":
+                        if (ascending)
+                        {
+                            offerssource = offerssource.OrderBy(i => i.CreateDate).ToList();
+                        }
+                        else
+                        {
+                            offerssource = offerssource.OrderByDescending(i => i.CreateDate).ToList();
+                        }
+
+                        break;
+                    case "Дата обновления":
+                        if (ascending)
+                        {
+                            offerssource = offerssource.OrderBy(i => i.LastUpdateDate).ToList();
+                        }
+                        else
+                        {
+                            offerssource = offerssource.OrderByDescending(i => i.LastUpdateDate).ToList();
+                        }
+
+                        break;
+
+                }
+            }
+            else
+            {
+                offerssource = offerssource.OrderByDescending(i => i.CreateDate).ToList();
+                OffersDateComboBox.IsEnabled = false;
+            }
+
             switch (MainTabs.SelectedIndex)
             {
                 case 0:
@@ -466,6 +527,19 @@ namespace LivingComplex.Windows
         {
             AddEmployee adi = new AddEmployee();
             adi.ShowDialog();
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            Update();
+        }
+
+        private void CreateNewsButton_Click(object sender, RoutedEventArgs e)
+        {
+            CreateNews ci = new CreateNews(Employeer);
+            ci.ShowDialog();
+
+            
         }
     }
 }

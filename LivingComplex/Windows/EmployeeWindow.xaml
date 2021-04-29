@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LivingComplex.Windows"
         mc:Ignorable="d"
-        Title="Окно работника" Height="450" Width="800" Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
+        Title="Окно работника" Height="650" Width="1000" Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
     <Grid Background="#f4f4f4">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
@@ -107,15 +107,37 @@
                             <StackPanel Grid.Row="0" Orientation="Horizontal">
                                 <ComboBox x:Name="ServiceFilterBox" SelectedItem="{Binding ServiceFilter, UpdateSourceTrigger=PropertyChanged}"
                                           VerticalContentAlignment="Center"/>
-                                <!--
-                                <Label Content="Тип сортировки"></Label>
+                                
+                                <Label Content="Тип сортировки" VerticalContentAlignment="Center"></Label>
                                 <ComboBox x:Name="SortTypeOffersComboBox" SelectedItem="{Binding SortType}"
                                           VerticalContentAlignment="Center"/>
-                                <Label Content="Дата"/>
+                                <Label Content="Дата" VerticalContentAlignment="Center"/>
                                 <ComboBox x:Name="OffersDateComboBox" SelectedItem="{Binding OffersDate}"
                                           VerticalContentAlignment="Center"/>
-                                -->
-
+                                
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                    <RadioButton GroupName="TaskStatus"
+                                                 x:Name="OfferGot"
+                                                 Content="Получена"
+                                                 Checked="RadioButton_Checked"/>
+                                    <Label Content=" " Height="10"/>
+                                    <RadioButton GroupName="TaskStatus"
+                                                 x:Name="OfferOnWork"
+                                                 Content="Выполняется"
+                                                 Checked="RadioButton_Checked"/>
+                                </StackPanel>
+                                <Label Content=" "/>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                    <RadioButton GroupName="TaskStatus"
+                                                 x:Name="OfferNotDone"
+                                                 Content="Не выполнена"
+                                                 Checked="RadioButton_Checked"/>
+                                    <Label Content=" " Height="10"/>
+                                    <RadioButton GroupName="TaskStatus"
+                                                 x:Name="OfferDone"
+                                                 Content="Выполнена"
+                                                 Checked="RadioButton_Checked"/>
+                                </StackPanel>
                             </StackPanel>
 
                             <ListView x:Name="OffersView" Grid.Row="1" MouseDoubleClick="OffersView_MouseDoubleClick" >
@@ -253,6 +275,14 @@
                     Content="Добавить жильца"
                     Width="150"
                     Grid.Column="1"/>
+            <Button x:Name="CreateNewsButton"
+                    Click="CreateNewsButton_Click"
+                    Background="#FFDCAA3E"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    Content="Добавить новость"
+                    Width="150"
+                    Grid.Column="0"/>
             <Button x:Name="AddEmployeeButton"
                     Click="AddEmployeeButton_Click"
                     Background="#FFDCAA3E"

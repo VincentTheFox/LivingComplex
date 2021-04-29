@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LivingComplex.Entity;
+using Microsoft.Win32;
 
 namespace LivingComplex.Windows
 {
@@ -22,8 +24,8 @@ namespace LivingComplex.Windows
     /// </summary>
     public partial class TenantWindow : Window, INotifyPropertyChanged
     {
-        
-       
+        public string CrtService { get; set; } = "Все услуги";
+        public string FilePath { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string property)
         {
@@ -43,6 +45,7 @@ namespace LivingComplex.Windows
             
             DataContext = this;
             var service = CN.c.Service.Select(i => i.ServiceName).ToList();
+            service.Insert(0, "Все услуги");
             CreateService_ComboBox.ItemsSource = service;
             Update();
         }
@@ -53,6 +56,7 @@ namespace LivingComplex.Windows
         {
             var offersCollection = CN.c.Offers.ToList();
             var tenantsourseCollection = CN.c.Tenants.ToList();
+            var newssource = CN.c.News.ToList();
 
             /// <summary>
             /// Getting address for label
@@ -87,7 +91,9 @@ namespace LivingComplex.Windows
             /// <summary>
             offersCollection = offersCollection.Where(i => i.OfferSenderFlatID == Tenant.FlatID).OrderByDescending(i=>i.idOffer).ToList() ;
             tenantsourseCollection = tenantsourseCollection.Where(i => i.FlatID == Tenant.FlatID).ToList();
-            
+            newssource = newssource.OrderByDescending(i => i.idNews).ToList();
+
+            NewsList.ItemsSource = newssource;
             TenantView.ItemsSource = tenantsourseCollection;
             OffersList.ItemsSource = offersCollection;
             
@@ -125,9 +131,24 @@ namespace LivingComplex.Windows
 
         private void CreateService_btn_Click(object sender, RoutedEventArgs e)
         {
+            string filename = FilePath;
+            byte[] imageData;
+            if (FilePath != null)
+            {
+
+                using (System.IO.FileStream fs = new System.IO.FileStream(filename, FileMode.Open))
+                {
+                    imageData = new byte[fs.Length];
+                    fs.Read(imageData, 0, imageData.Length);
+                }
+            }
+            else
+            {
+                imageData = null;
+            }
             if (ShortDescription.Text != "")
             {
-                if(ShortDescription.Text != "Опишите проблему...")
+                if(ShortDescription.Text != "Опишите проблему..." && CrtService != "Все услуги")
                 {
                     CN.c.Offers.Add(new Offers
                     {
@@ -135,7 +156,8 @@ namespace LivingComplex.Windows
                         Service = CreateService_ComboBox.SelectedIndex,
                         ShortDescription = ShortDescription.Text,
                         CreateDate = System.DateTime.Now,
-                        StatusID = 2
+                        StatusID = 2,
+                        Photo = imageData
 
                     });
                     try
@@ -173,6 +195,38 @@ namespace LivingComplex.Windows
                 ofi.ShowDialog();
             }
 
+        }
+
+        private void ChooseFile_Click(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog()
+            {
+                Filter = "Изображения |*.png;*.jpg"
+            };
+            if (openFileDialog.ShowDialog() == true)
+            {
+                FilePath = openFileDialog.FileName;
+            }
+            if (FilePath == "")
+            {
+                ChosenFileName.Visibility = Visibility.Visible;
+                ChosenFileName.Text = "Фото не выбрано!";
+            }
+            else
+            {
+                ChosenFileName.Visibility = Visibility.Visible;
+                ChosenFileName.Text = "Выбраное фото: " + FilePath;
+            }
+        }
+
+        private void NewsList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(NewsList.SelectedItem is News news)
+            {
+                NewsInfo ni = new NewsInfo(news);
+                ni.ShowDialog();
+            }
+            
         }
     }
 }

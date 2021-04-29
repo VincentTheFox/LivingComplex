@@ -38,7 +38,46 @@
                     </TabItem.Header>
                     <TabItem.Content>
                         <Grid>
-
+                            <ListView x:Name="NewsList" MouseDoubleClick="NewsList_MouseDoubleClick">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Border Grid.Column="0" Width="100">
+                                                <Image>
+                                                    <Image.Source>
+                                                        <Binding Path="NewsPhoto">
+                                                            <Binding.TargetNullValue>
+                                                               \Resources\noimage.jpg
+                                                            </Binding.TargetNullValue>
+                                                        </Binding>
+                                                    </Image.Source>
+                                                </Image>
+                                            </Border>
+                                            <StackPanel Grid.Column="1" Width="400">
+                                                <TextBlock TextWrapping="Wrap">
+                                                    <Run Text="{Binding NewsTitle}"/>
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap">
+                                                    <Run Text="{Binding NewsText}"/>
+                                                </TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="2">
+                                                <TextBlock>
+                                                    <Run Text="{Binding Employers.EmployeeFullName, Mode=OneWay}"/>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Run Text="{Binding CreatedDate, Mode=OneWay}"/>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ListView>
                         </Grid>
                     </TabItem.Content>
                 </TabItem>
@@ -126,11 +165,10 @@
                                 </Grid>
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="0.5*"/>
-                                        <RowDefinition Height="0.8*"/>
-                                        <RowDefinition Height="0.2*"/>
-                                        <RowDefinition />
-                                        <RowDefinition Height="0.1*"/>
+                                        <RowDefinition Height="60*"/>
+                                        <RowDefinition Height="120*"/>
+                                        <RowDefinition Height="119*" />
+                                        <RowDefinition Height="12*"/>
                                     </Grid.RowDefinitions>
                                     <Label Content="Оформить услугу" Grid.Row="0" FontSize="20"/>
                                     <StackPanel Grid.Row="1">
@@ -138,11 +176,13 @@
                                         <ComboBox x:Name="CreateService_ComboBox" Height="27"
                                                   Background="#f1f1f1"
                                                   Grid.Row="1"
-                                                  SelectedItem="{Binding CrtService, UpdateSourceTrigger=PropertyChanged}"/>
+                                                  SelectedItem="{Binding CrtService}"/>
+                                        <Button x:Name="ChooseFile" Click="ChooseFile_Click" Content="Выбрать фото" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold"></Button>
+                                        <TextBlock x:Name="ChosenFileName" Text="" Visibility="Hidden" TextWrapping="Wrap"/>
                                     </StackPanel>
 
                                     <TextBox x:Name="ShortDescription"
-                                        Grid.Row="3"
+                                        Grid.Row="2"
                                         Text="Опишите проблему..."
                                         MaxLength="150"
                                         TextWrapping="Wrap"

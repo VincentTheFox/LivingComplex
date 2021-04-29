@@ -63,7 +63,7 @@ namespace LivingComplex.Entity
             get
             {
                 string bd = BirthdayDate.ToString();
-                bd.Substring(0, 10);
+                bd = bd.Substring(0, 10);
                 return bd;
             }
         }
@@ -82,7 +82,7 @@ namespace LivingComplex.Entity
             get
             {
                 string bd = BirthdayDate.ToString();
-                bd.Substring(0, 10);
+                bd = bd.Substring(0, 10);
                 return bd;
             }
         }
@@ -91,7 +91,7 @@ namespace LivingComplex.Entity
             get
             {
                 string ws = WorkingStartDate.ToString();
-                ws.Substring(0, 10);
+                ws = ws.Substring(0, 10);
                 return ws;
             }
         }
@@ -103,7 +103,7 @@ namespace LivingComplex.Entity
             get
             {
                 string cd = CreateDate.ToString();
-                cd.Substring(0, 10);
+                cd = cd.Substring(0, 10);
                 return cd;
 
                 
@@ -120,7 +120,7 @@ namespace LivingComplex.Entity
                 }
                 else
                 {
-                    ud.Substring(0, 10);
+                    ud = ud.Substring(0, 10);
                     return ud;
                 }
                 
@@ -136,8 +136,20 @@ namespace LivingComplex.Entity
             get
             {
                 string hd = Date.ToString();
-                hd.Substring(0, 10);
+                hd = hd.Substring(0, 10);
                 return hd;
+            }
+        }
+    }
+    partial class News
+    {
+        public string CreatedDate
+        {
+            get
+            {
+                string cd = NewsDate.ToString();
+                cd = cd.Substring(0, 10);
+                return cd;
             }
         }
     }

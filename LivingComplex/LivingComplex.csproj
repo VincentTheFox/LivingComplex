@@ -152,6 +152,9 @@
     <Compile Include="Windows\AddTenant.xaml.cs">
       <DependentUpon>AddTenant.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\CreateNews.xaml.cs">
+      <DependentUpon>CreateNews.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\EmployeeFullInfo.xaml.cs" />
     <Compile Include="Windows\EmployeeFullInfoEmployee.xaml.cs">
       <DependentUpon>EmployeeFullInfoEmployee.xaml</DependentUpon>
@@ -161,6 +164,9 @@
     </Compile>
     <Compile Include="Windows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NewsInfo.xaml.cs">
+      <DependentUpon>NewsInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\OfferFullInfo.xaml.cs" />
     <Compile Include="Windows\OfferFullInfoEmployee.xaml.cs">
@@ -229,6 +235,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\CreateNews.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\EmployeeFullInfo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -242,6 +252,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\NewsInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -287,6 +301,7 @@
       <DependentUpon>LivingComplexContext.edmx</DependentUpon>
       <LastGenOutput>LivingComplexContext.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\noimage.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,46 @@
+﻿<Window x:Class="LivingComplex.Windows.CreateNews"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LivingComplex.Windows"
+        mc:Ignorable="d"
+        Title="CreateNews" Height="450" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.RowSpan="3">
+            <Image Source="/Resources/Yellow.png" HorizontalAlignment="Right" Opacity="0.795"/>
+        </Grid>
+        <Label Content="Создание новости"
+               FontSize="20"
+               VerticalContentAlignment="Center"
+               HorizontalAlignment="Center"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+                <Label Content="Заголовок новости"/>
+                <TextBox x:Name="NewsTitle"
+                         Width="200"
+                         HorizontalAlignment="Left"/>
+                <Button x:Name="ChooseFile" Click="ChooseFile_Click" Content="Выбрать фото" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold"></Button>
+                <TextBlock x:Name="ChosenFileName" Text="" Visibility="Hidden" TextWrapping="Wrap"/>
+                <Label Content="Текст новости"/>
+                <TextBox x:Name="NewsText"
+                         Height="200"
+                         Background="White"
+                         />
+            </StackPanel>
+            
+        </Grid>
+        <Button x:Name="Back_btn" Click="Back_btn_Click" Content="Назад" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold"></Button>
+        <Button x:Name="CreateNewsbtn" Click="CreateNews_Click" Content="Создать новость" Grid.Row="2" HorizontalAlignment="Right" Background="#FF2A4276" Foreground="White" FontWeight="Bold"></Button>
+    </Grid>
+</Window>
