@@ -158,7 +158,7 @@ namespace LivingComplex.Windows
             if (string.IsNullOrEmpty(Search) != true)
             {
                 string search = Search.ToLower();
-                tenantsource = tenantsource.Where(i => i.FirstName.ToLower().Contains(search) || i.LastName.ToLower().Contains(search) || i.Patronymic.ToLower().Contains(search) == true).ToList();
+                tenantsource = tenantsource.Where(i => i.FullName.ToLower().Contains(search)|| i.idTenant.ToString().ToLower().Contains(search) || i.TenantStatus.StatusName.ToLower().Contains(search) == true).ToList();
             }
            
             if (SortType != "Отсутcтвует")
@@ -218,13 +218,12 @@ namespace LivingComplex.Windows
                         }
                         break;
                     case "Без сортировки":
-                        tenantsource = CN.c.Tenants.ToList();
+                        
                         break;
                 }
             }
             else
             {
-                
                 SortPoleCombobox.IsEnabled = false;
             }
             /// <summary>
