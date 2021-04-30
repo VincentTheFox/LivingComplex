@@ -19,9 +19,15 @@
                 <ColumnDefinition Width="0.2*"/>
                 <ColumnDefinition Width="0.3*"/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="Address_label"
-                   HorizontalAlignment="Left"
+            <StackPanel Orientation="Horizontal">
+                <Border Width="50" HorizontalAlignment="Left">
+                    <Image Source="/Resources/icon.png"/>
+                </Border>
+                <Label x:Name="Address_label"
+                  
                    VerticalContentAlignment="Center"/>
+            </StackPanel>
+            
             <Button x:Name="SettingButton"
                     Click="SettingButton_Click"
                     Background="#F3DCAA3E" 
@@ -37,7 +43,9 @@
                 <Button x:Name="ExitButton"
                     Click="ExitButton_Click"
                     Content="Выход"
+                    Height="30"
                     Grid.Column="2" Background="#F3DCAA3E" Foreground="White" FontWeight="Bold" Margin="22,0,10,5" />
+            
         </Grid>
         <!--Main-->
         <Grid Grid.Row="1" Background="#f4f4f4">

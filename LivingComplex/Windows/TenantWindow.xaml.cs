@@ -83,7 +83,7 @@ namespace LivingComplex.Windows
             int FlatNumber = FlatNumberquery.First();
             int HouseNumber = HouseNumberquery.First();
             string StreetName = StreetNamequery.First();
-            string Address = "Улица " + StreetName + " Дом №" + HouseNumber + " Квартира №" + FlatNumber;
+            string Address = "Улица " + StreetName + ", дом №" + HouseNumber + ", квартира №" + FlatNumber;
             CreateService_ComboBox.ItemsSource = CN.c.Service.Select(i => i.ServiceName).ToList();
             Address_label.Content = Address;
             /// <summary>

@@ -147,7 +147,7 @@ namespace LivingComplex.Windows
             employeesource = c.Employers.ToList();
             historysource = c.History.OrderByDescending(i => i.idHistory).ToList();
             offerssource = c.Offers.ToList();
-            newssource = CN.c.News.ToList();
+            newssource = CN.c.News.OrderByDescending(i=>i.idNews).ToList();
             tenantsource = c.Tenants.ToList();
             emploginsource = c.EmployeeLogin.ToList();
             tenloginsource = c.TenantLogin.ToList();

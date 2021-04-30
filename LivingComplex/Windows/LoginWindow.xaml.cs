@@ -76,7 +76,7 @@ namespace LivingComplex.Windows
                 }
                 else
                 {
-                    MessageBox.Show("No such user or wrong data");
+                    MessageBox.Show("No such user or wrong data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
             }
