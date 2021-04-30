@@ -38,7 +38,7 @@
                 
             </StackPanel>
         </Grid>
-        <Button x:Name="Back_btn" Click="Back_btn_Click" Content="Назад" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold"></Button>
-        <Button x:Name="ChangStatusButm" Click="ChangStatusButm_Click" Content="Изменить статус" Grid.Row="2" HorizontalAlignment="Right" Background="#FF2A4276" Foreground="White" FontWeight="Bold" Width="150"></Button>
+        <Button x:Name="Back_btn" Click="Back_btn_Click" Content="Назад" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold" Margin="10,8,0,9" Width="130"></Button>
+        <Button x:Name="ChangStatusButm" Click="ChangStatusButm_Click" Content="Изменить статус" Grid.Row="2" HorizontalAlignment="Right" Background="#FF2A4276" Foreground="White" FontWeight="Bold" Width="130" Margin="0,8,10,9"></Button>
     </Grid>
 </Window>

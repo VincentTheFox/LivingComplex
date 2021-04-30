@@ -37,7 +37,16 @@
 
             </StackPanel>
         </Grid>
-        <Button x:Name="Back_btn" Click="Back_btn_Click" Content="Назад" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold"></Button>
+        <Button x:Name="Back_btn"
+                Click="Back_btn_Click"
+                Content="Назад"
+                Grid.Row="2"
+                HorizontalAlignment="Left"
+                Background="#FF2A4276"
+                Foreground="White"
+                FontWeight="Bold"
+                Margin="10,7,0,10"
+                Width="130"></Button>
 
     </Grid>
 </Window>

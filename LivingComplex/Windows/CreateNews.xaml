@@ -30,7 +30,7 @@
                 <TextBox x:Name="NewsTitle"
                          Width="200"
                          HorizontalAlignment="Left"/>
-                <Button x:Name="ChooseFile" Click="ChooseFile_Click" Content="Выбрать фото" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold"></Button>
+                <Button x:Name="ChooseFile" Click="ChooseFile_Click" Content="Выбрать фото" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold" Width="130"></Button>
                 <TextBlock x:Name="ChosenFileName" Text="" Visibility="Hidden" TextWrapping="Wrap"/>
                 <Label Content="Текст новости"/>
                 <TextBox x:Name="NewsText"
@@ -40,7 +40,7 @@
             </StackPanel>
             
         </Grid>
-        <Button x:Name="Back_btn" Click="Back_btn_Click" Content="Назад" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold"></Button>
-        <Button x:Name="CreateNewsbtn" Click="CreateNews_Click" Content="Создать новость" Grid.Row="2" HorizontalAlignment="Right" Background="#FF2A4276" Foreground="White" FontWeight="Bold"></Button>
+        <Button x:Name="Back_btn" Click="Back_btn_Click" Content="Назад" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold" Margin="10,12,0,10" Width="130"></Button>
+        <Button x:Name="CreateNewsbtn" Click="CreateNews_Click" Content="Создать новость" Grid.Row="2" HorizontalAlignment="Right" Background="#FF2A4276" Foreground="White" FontWeight="Bold" Margin="0,12,10,10" Width="130"></Button>
     </Grid>
 </Window>

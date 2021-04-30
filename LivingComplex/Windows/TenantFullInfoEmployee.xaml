@@ -54,7 +54,26 @@
                 <TextBox x:Name="INN_label" />
             </StackPanel>
         </Grid>
-        <Button x:Name="Back_btn" Click="Back_btn_Click" Content="Назад" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="#f1f1f1" FontWeight="Bold" ></Button>
-        <Button x:Name="Change_Button" Click="Change_Button_Click" Content="Изменить" Grid.Row="2" HorizontalAlignment="Right" Background="#FF2A4276" Foreground="#f1f1f1" FontWeight="Bold" IsEnabled="False"></Button>
+        <Button x:Name="Back_btn"
+                Click="Back_btn_Click"
+                Content="Назад"
+                Grid.Row="2"
+                HorizontalAlignment="Left"
+                Background="#FF2A4276"
+                Foreground="#f1f1f1"
+                FontWeight="Bold"
+                Margin="10,12,0,10"
+                Width="130"></Button>
+        <Button x:Name="Change_Button"
+                Click="Change_Button_Click"
+                Content="Изменить"
+                Grid.Row="2"
+                HorizontalAlignment="Right"
+                Background="#FF2A4276"
+                Foreground="#f1f1f1"
+                FontWeight="Bold"
+                IsEnabled="False"
+                Margin="0,12,10,10"
+                Width="130"></Button>
     </Grid>
 </Window>

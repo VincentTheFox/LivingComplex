@@ -64,6 +64,6 @@
                 <Label x:Name="ContractNumber"/>
             </StackPanel>
         </Grid>
-        <Button x:Name="Back_Button" Click="Back_Button_Click" Content="Назад" Grid.Row="2" HorizontalAlignment="Left" Foreground="#f1f1f1" FontWeight="Bold" Background="#FF2A4276"></Button>
+        <Button x:Name="Back_Button" Click="Back_Button_Click" Content="Назад" Grid.Row="2" HorizontalAlignment="Left" Foreground="#f1f1f1" FontWeight="Bold" Background="#FF2A4276" Width="130" Margin="10,18,0,10"></Button>
     </Grid>
 </Window>
