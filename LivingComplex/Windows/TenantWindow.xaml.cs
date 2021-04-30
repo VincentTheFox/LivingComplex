@@ -42,7 +42,7 @@ namespace LivingComplex.Windows
         {
             Tenant = tenantLogged;
             InitializeComponent();
-            
+           
             DataContext = this;
             var service = CN.c.Service.Select(i => i.ServiceName).ToList();
             service.Insert(0, "Все услуги");
@@ -227,6 +227,12 @@ namespace LivingComplex.Windows
                 ni.ShowDialog();
             }
             
+        }
+
+        private void SettingButton_Click(object sender, RoutedEventArgs e)
+        {
+            Settings si = new Settings(Tenant);
+            si.Show();
         }
     }
 }

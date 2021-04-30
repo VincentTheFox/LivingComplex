@@ -14,19 +14,19 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="0.2*"/>
-                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="671*"/>
+                <ColumnDefinition Width="157*"/>
+                <ColumnDefinition Width="166*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="ExitButton"
                     Click="ExitButton_Click"
                     Content="Выход"
                     Grid.Column="2"
-                    HorizontalAlignment="Right" Background="#F3DCAA3E" Foreground="White" FontWeight="Bold"/>
+                    HorizontalAlignment="Right" Background="#F3DCAA3E" Foreground="White" FontWeight="Bold" Margin="0,12,30,10" Height="Auto"/>
             <Button x:Name="UserButton"
                     Grid.Column="1"
                     Background="#F3DCAA3E"
-                    Click="UserButton_Click"
+                    Click="UserButton_Click" Margin="27,12,21,10" Height="Auto" Width="Auto"
                     >
                 <Button.Content>
                     <Image>
@@ -40,7 +40,63 @@
         <Grid Grid.Row="1" >
             <TabControl SelectionChanged="TabControl_SelectionChanged"
                         x:Name="MainTabs"  >
+                <TabItem Style="{StaticResource Item}" Height="30">
+                    <TabItem.Header>
+                        <TextBlock Text="Новости" Foreground="White" FontWeight="Bold"/>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <Grid>
+                            <ListView x:Name="NewsList" MouseDoubleClick="NewsList_MouseDoubleClick">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Border Grid.Column="0" Width="100">
+                                                <Image>
+                                                    <Image.Source>
+                                                        <Binding Path="NewsPhoto">
+                                                            <Binding.TargetNullValue>
+                                                                \Resources\noimage.jpg
+                                                            </Binding.TargetNullValue>
+                                                        </Binding>
+                                                    </Image.Source>
+                                                </Image>
+                                            </Border>
+                                            <StackPanel Grid.Column="1" Width="600">
+                                                <TextBlock TextWrapping="Wrap">
+                                                    <Run Text="{Binding NewsTitle}" FontWeight="Bold"/>
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap">
+                                                    <Run Text="{Binding NewsText}"/>
+                                                </TextBlock>
 
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="2">
+                                                <TextBlock>
+                                                    <Run Text="Создатель новости" FontWeight="Bold"/>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Run Text="{Binding Employers.EmployeeFullName, Mode=OneWay}" />
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Run Text="Дата создания" FontWeight="Bold"/>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Run Text="{Binding CreatedDate, Mode=OneWay}"/>
+                                                </TextBlock>
+
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </TabItem.Content>
+                </TabItem>
                 <TabItem Height="30" x:Name="tenanttab" Style="{StaticResource Item}">
                     <TabItem.Header>
                         <TextBlock Text="Жильцы" Foreground="White" FontWeight="Bold" />
@@ -54,14 +110,14 @@
                             <StackPanel Grid.Row="0" Orientation="Horizontal">
                                 <TextBox x:Name="SearcBox" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
                                            Width="100" TextChanged="SearcBox_TextChanged" VerticalContentAlignment="Center"/>
-                                
+
                                 <Label Content="Тип сортировки" VerticalContentAlignment="Center"/>
                                 <ComboBox x:Name="SortTypeComboBox" SelectedItem="{Binding SortType}"
                                           VerticalContentAlignment="Center"/>
                                 <Label Content="Тип данных" VerticalContentAlignment="Center"/>
                                 <ComboBox x:Name="SortPoleCombobox" SelectedItem="{Binding SortPole}"
                                           VerticalContentAlignment="Center"/>
-                                
+
                             </StackPanel>
                             <ListView x:Name="TenantView" 
                                       Grid.Row="1" MouseDoubleClick="TenantView_MouseDoubleClick" 
@@ -107,14 +163,14 @@
                             <StackPanel Grid.Row="0" Orientation="Horizontal">
                                 <ComboBox x:Name="ServiceFilterBox" SelectedItem="{Binding ServiceFilter, UpdateSourceTrigger=PropertyChanged}"
                                           VerticalContentAlignment="Center"/>
-                                
+
                                 <Label Content="Тип сортировки" VerticalContentAlignment="Center"></Label>
                                 <ComboBox x:Name="SortTypeOffersComboBox" SelectedItem="{Binding SortType}"
                                           VerticalContentAlignment="Center"/>
                                 <Label Content="Дата" VerticalContentAlignment="Center"/>
                                 <ComboBox x:Name="OffersDateComboBox" SelectedItem="{Binding OffersDate}"
                                           VerticalContentAlignment="Center"/>
-                                
+
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <RadioButton GroupName="TaskStatus"
                                                  x:Name="OfferGot"
@@ -260,12 +316,12 @@
         </Grid>
         <Grid Grid.Row="2" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="100"/>
-                
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="186*"/>
+                <ColumnDefinition Width="213*"/>
+                <ColumnDefinition Width="84*"/>
+                <ColumnDefinition Width="191*"/>
+                <ColumnDefinition Width="160*"/>
+                <ColumnDefinition Width="160*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="AddTenantButton"
                     Click="AddTenantButton_Click"
@@ -273,44 +329,44 @@
                     Foreground="White"
                     FontWeight="Bold"
                     Content="Добавить жильца"
-                    Width="150"
-                    Grid.Column="1"/>
+                    Width="Auto"
+                    Grid.Column="1" Height="Auto" Margin="23,11,22,11"/>
             <Button x:Name="CreateNewsButton"
                     Click="CreateNewsButton_Click"
                     Background="#FFDCAA3E"
                     Foreground="White"
                     FontWeight="Bold"
                     Content="Добавить новость"
-                    Width="150"
-                    Grid.Column="0"/>
+                    Width="Auto"
+                    Grid.Column="0" Height="Auto" Margin="2,11,3,11" />
             <Button x:Name="AddEmployeeButton"
                     Click="AddEmployeeButton_Click"
                     Background="#FFDCAA3E"
                     Foreground="White"
                     FontWeight="Bold"
                     Content="Добавить работника"
-                    Width="150"
-                    Grid.Column="1"/>
+                    Width="Auto"
+                    Grid.Column="1" Height="Auto" Margin="23,11,10,11"/>
             <TextBlock x:Name="PageBlock"
-                       Grid.Column="2"
+                       Grid.Column="3"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
+                       VerticalAlignment="Center" Height="40" Width="150"
                        />
             <Button x:Name="NextPageButton"
                     Click="NextPageButton_Click"
                     Content=">"
-                    Grid.Column="4" Background="#FFDCAA3E" Foreground="White" FontWeight="Bold"
+                    Grid.Column="5" Background="#FFDCAA3E" Foreground="White" FontWeight="Bold"
                     FontSize="20"
-                    VerticalContentAlignment="Center"/>
+                    VerticalContentAlignment="Center" Height="Auto" Margin="25,11" Width="Auto"/>
             <Button x:Name="PrevPageButton"
                     Click="PrevPageButton_Click"
                     Content="&lt;"
                     Foreground="White"
-                    Grid.Column="3"
+                    Grid.Column="4"
                     Background="#FFDCAA3E"
                     FontWeight="Bold"
                     FontSize="20"
-                    VerticalContentAlignment="Center"
+                    VerticalContentAlignment="Center" Margin="25,11" Height="Auto" Width="Auto"
                     />
         </Grid>
     </Grid>

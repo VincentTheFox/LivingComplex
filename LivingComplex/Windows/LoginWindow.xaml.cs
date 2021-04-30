@@ -46,10 +46,21 @@ namespace LivingComplex.Windows
             var userLogin = CN.c.TenantLogin.Where(i => i.Login == LoginBox.Text && i.Password == PasswordBox.Password).FirstOrDefault();
             if (userLogin != null && userLogin.RoleID == 2)
             {
-                TenantWindow tnt = new TenantWindow(userLogin);
-                this.Close();
+                string pass = userLogin.Password;
+                pass = pass.Substring(0, 8);
+                if (pass == "Password")
+                {
+                    MessageBox.Show("Похоже вы зашли первый раз, пожалуйста измените пароль", "Первый раз?", MessageBoxButton.OK, MessageBoxImage.Information);
+                    FTChangePassword ftc = new FTChangePassword(userLogin);
+                    ftc.ShowDialog();
+                }
+                else
+                {
+                    TenantWindow tnt = new TenantWindow(userLogin);
+                    this.Close();
 
-                tnt.Show();
+                    tnt.Show();
+                }
             }
             else if (userLogin == null)
             {

@@ -162,6 +162,9 @@
     <Compile Include="Windows\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\FTChangePassword.xaml.cs">
+      <DependentUpon>FTChangePassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -171,6 +174,9 @@
     <Compile Include="Windows\OfferFullInfo.xaml.cs" />
     <Compile Include="Windows\OfferFullInfoEmployee.xaml.cs">
       <DependentUpon>OfferFullInfoEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\TenantFullInfo.xaml.cs" />
     <Compile Include="Windows\TenantFullInfoEmployee.xaml.cs">
@@ -251,6 +257,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\FTChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -264,6 +274,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\OfferFullInfoEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -301,6 +315,7 @@
       <DependentUpon>LivingComplexContext.edmx</DependentUpon>
       <LastGenOutput>LivingComplexContext.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\settings.png" />
     <Resource Include="Resources\noimage.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

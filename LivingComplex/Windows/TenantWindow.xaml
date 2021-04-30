@@ -17,14 +17,27 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.3*"/>
             </Grid.ColumnDefinitions>
             <Label x:Name="Address_label"
                    HorizontalAlignment="Left"
                    VerticalContentAlignment="Center"/>
-            <Button x:Name="ExitButton"
+            <Button x:Name="SettingButton"
+                    Click="SettingButton_Click"
+                    Background="#F3DCAA3E" 
+                    Foreground="White"
+                    Grid.Column="1"
+                    Width="30"
+                    Height="30"
+                    FontWeight="Bold">
+                <Button.Content>
+                    <Image Source="/Resources/settings.png"/>
+                </Button.Content>
+            </Button>
+                <Button x:Name="ExitButton"
                     Click="ExitButton_Click"
                     Content="Выход"
-                    Grid.Column="1" Background="#F3DCAA3E" Foreground="White" FontWeight="Bold" Margin="24,2,8,3" />
+                    Grid.Column="2" Background="#F3DCAA3E" Foreground="White" FontWeight="Bold" Margin="22,0,10,5" />
         </Grid>
         <!--Main-->
         <Grid Grid.Row="1" Background="#f4f4f4">
@@ -60,19 +73,27 @@
                                             </Border>
                                             <StackPanel Grid.Column="1" Width="400">
                                                 <TextBlock TextWrapping="Wrap">
-                                                    <Run Text="{Binding NewsTitle}"/>
+                                                    <Run Text="{Binding NewsTitle}" FontWeight="Bold"/>
                                                 </TextBlock>
                                                 <TextBlock TextWrapping="Wrap">
                                                     <Run Text="{Binding NewsText}"/>
                                                 </TextBlock>
+                                                
                                             </StackPanel>
                                             <StackPanel Grid.Column="2">
                                                 <TextBlock>
-                                                    <Run Text="{Binding Employers.EmployeeFullName, Mode=OneWay}"/>
+                                                    <Run Text="Создатель новости" FontWeight="Bold"/>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Run Text="{Binding Employers.EmployeeFullName, Mode=OneWay}" />
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Run Text="Дата создания" FontWeight="Bold"/>
                                                 </TextBlock>
                                                 <TextBlock>
                                                     <Run Text="{Binding CreatedDate, Mode=OneWay}"/>
                                                 </TextBlock>
+                                                
                                             </StackPanel>
                                         </Grid>
                                     </DataTemplate>
@@ -161,7 +182,7 @@
                                         Click="CreateService_btn_Click"
                                         Content="Оформить"
                                         Width="Auto"
-                                        Background="#F3DCAA3E" Foreground="White" FontWeight="Bold" Margin="10,11,10,10" Height="Auto" />
+                                        Background="#F3DCAA3E" Foreground="White" FontWeight="Bold" Margin="10,10,10,11" Height="Auto" />
                                 </Grid>
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
@@ -177,7 +198,7 @@
                                                   Background="#f1f1f1"
                                                   Grid.Row="1"
                                                   SelectedItem="{Binding CrtService}"/>
-                                        <Button x:Name="ChooseFile" Click="ChooseFile_Click" Content="Выбрать фото" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold"></Button>
+                                        <Button x:Name="ChooseFile" Click="ChooseFile_Click" Content="Выбрать фото" Grid.Row="2" HorizontalAlignment="Left" Background="#FF2A4276" Foreground="White" FontWeight="Bold" Width="114"></Button>
                                         <TextBlock x:Name="ChosenFileName" Text="" Visibility="Hidden" TextWrapping="Wrap"/>
                                     </StackPanel>
 

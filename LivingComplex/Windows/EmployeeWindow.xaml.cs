@@ -60,6 +60,7 @@ namespace LivingComplex.Windows
         List<Employers> employeesource = new List<Employers>();
         List<EmployeeLogin> emploginsource = new List<EmployeeLogin>();
         List<TenantLogin> tenloginsource = new List<TenantLogin>();
+        List<News> newssource = new List<News>();
         public EmployeeWindow(EmployeeLogin employeeLogged)
         {
 
@@ -103,6 +104,16 @@ namespace LivingComplex.Windows
             SortTypeComboBox.ItemsSource = SortTypeList.ToList();
             SortTypeOffersComboBox.ItemsSource = SortTypeListOffers.ToList();
             OffersDateComboBox.ItemsSource = offerdatelist.ToList();
+            if(employeeLogged.RoleID == 4 || employeeLogged.RoleID == 1)
+            {
+                employeelogtab.Visibility = Visibility.Visible;
+                tenlogtab.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                employeelogtab.Visibility = Visibility.Hidden;
+                tenlogtab.Visibility = Visibility.Hidden;
+            }
             
 
         }
@@ -134,9 +145,9 @@ namespace LivingComplex.Windows
             }
 
             employeesource = c.Employers.ToList();
-            historysource = c.History.ToList();
+            historysource = c.History.OrderByDescending(i => i.idHistory).ToList();
             offerssource = c.Offers.ToList();
-            
+            newssource = CN.c.News.ToList();
             tenantsource = c.Tenants.ToList();
             emploginsource = c.EmployeeLogin.ToList();
             tenloginsource = c.TenantLogin.ToList();
@@ -288,6 +299,29 @@ namespace LivingComplex.Windows
             switch (MainTabs.SelectedIndex)
             {
                 case 0:
+                    RowsAmount = newssource.Count();
+                    AllPages = Math.Ceiling((float)RowsAmount / 10);
+                    newssource = newssource.Skip(Page * 10).Take(10).ToList();
+
+                    RowsShowed = newssource.Count();
+                    if (tenantsource.Count < 10)
+                    {
+                        NextPageButton.IsEnabled = false;
+                    }
+                    else
+                    {
+                        NextPageButton.IsEnabled = true;
+                    }
+                    if (Page == 0)
+                    {
+                        PrevPageButton.IsEnabled = false;
+                    }
+                    else
+                    {
+                        PrevPageButton.IsEnabled = true;
+                    }
+                    break;
+                case 1:
                     RowsAmount = tenantsource.Count();
                     AllPages = Math.Ceiling((float)RowsAmount / 200);
                     tenantsource = tenantsource.Skip(Page * 200).Take(200).ToList();
@@ -310,7 +344,7 @@ namespace LivingComplex.Windows
                         PrevPageButton.IsEnabled = true;
                     }
                     break;
-                case 1:
+                case 2:
                     RowsAmount = offerssource.Count();
                     AllPages = Math.Ceiling((float)RowsAmount / 100);
 
@@ -334,7 +368,7 @@ namespace LivingComplex.Windows
                         PrevPageButton.IsEnabled = true;
                     }
                     break;
-                case 2:
+                case 3:
                     RowsAmount = historysource.Count();
                     AllPages = Math.Ceiling((float)RowsAmount / 200);
                     historysource = historysource.Skip(Page * 200).Take(200).ToList();
@@ -357,7 +391,7 @@ namespace LivingComplex.Windows
                         PrevPageButton.IsEnabled = true;
                     }
                     break;
-                case 3:
+                case 4:
 
                     RowsAmount = employeesource.Count();
                     AllPages = Math.Ceiling((float)RowsAmount / 50);
@@ -381,7 +415,7 @@ namespace LivingComplex.Windows
                         PrevPageButton.IsEnabled = true;
                     }
                     break;
-                case 4:
+                case 5:
                     RowsAmount = tenloginsource.Count();
                     AllPages = Math.Ceiling((float)RowsAmount / 200);
                     tenloginsource = tenloginsource.Skip(Page * 200).Take(200).ToList();
@@ -405,7 +439,7 @@ namespace LivingComplex.Windows
                         PrevPageButton.IsEnabled = true;
                     }
                     break;
-                case 5:
+                case 6:
                     RowsAmount = emploginsource.Count();
                     AllPages = Math.Ceiling((float)RowsAmount / 50);
                     emploginsource = emploginsource.Skip(Page * 50).Take(50).ToList();
@@ -430,7 +464,7 @@ namespace LivingComplex.Windows
                     }
                     break;
             }
-            
+            NewsList.ItemsSource = newssource;
             OffersView.ItemsSource = offerssource;
             EmployeeView.ItemsSource = employeesource;
             HistoryView.ItemsSource = historysource;
@@ -540,6 +574,16 @@ namespace LivingComplex.Windows
             ci.ShowDialog();
 
             
+        }
+
+        private void NewsList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(NewsList.SelectedItem is News news)
+            {
+                NewsInfo ni = new NewsInfo(news);
+                ni.Show();
+            }
+           
         }
     }
 }

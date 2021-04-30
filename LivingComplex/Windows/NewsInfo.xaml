@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LivingComplex.Windows"
         mc:Ignorable="d"
-        Title="NewsInfo" Height="500" Width="400" ResizeMode="NoResize" Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" FontSize="14">
+        Title="NewsInfo" Height="553.191" Width="400" ResizeMode="NoResize" Icon="/Resources/icon.png" WindowStartupLocation="CenterScreen" FontSize="14">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -27,14 +27,15 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="1">
                 <Border Width="140" Height="140" HorizontalAlignment="Left">
-                    <Image x:Name="NewsPhoto"/>
+                    <Image x:Name="NewsPhoto" Margin="0,0,-135,0"/>
                 </Border>
                 <TextBox x:Name="NewsText"
-                         Height="200"
+                         Height="237"
                          Background="White"
                          TextWrapping="Wrap"
+                         IsReadOnly="True"
                          />
-                <Label x:Name="NewsCreator"/>
+                <Label x:Name="NewsCreator" Height="31"/>
             </StackPanel>
 
         </Grid>
