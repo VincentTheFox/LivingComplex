@@ -19,7 +19,7 @@ namespace LivingComplex.Windows
     /// </summary>
     public partial class LoginWindow : Window
     {
-        public LoginWindow()
+       public LoginWindow()
         {
             InitializeComponent();
         }

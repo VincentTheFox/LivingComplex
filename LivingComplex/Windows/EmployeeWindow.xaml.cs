@@ -31,6 +31,7 @@ namespace LivingComplex.Windows
         /// </summary>
         public int RowsAmount { get; set; } = 0;
         public int RowsShowed { get; set; } = 0;
+   
         public double AllPages { get; set; } = 1;
         public int Page { get; set; } = 0;
 
@@ -159,10 +160,7 @@ namespace LivingComplex.Windows
                 string search = Search.ToLower();
                 tenantsource = tenantsource.Where(i => i.FirstName.ToLower().Contains(search) || i.LastName.ToLower().Contains(search) || i.Patronymic.ToLower().Contains(search) == true).ToList();
             }
-            else
-            {
-                tenantsource = tenantsource.ToList();
-            }
+           
             if (SortType != "Отсутcтвует")
             {
                 SortPoleCombobox.IsEnabled = true;
@@ -226,7 +224,7 @@ namespace LivingComplex.Windows
             }
             else
             {
-                tenantsource = tenantsource.ToList();
+                
                 SortPoleCombobox.IsEnabled = false;
             }
             /// <summary>
@@ -304,7 +302,7 @@ namespace LivingComplex.Windows
                     newssource = newssource.Skip(Page * 10).Take(10).ToList();
 
                     RowsShowed = newssource.Count();
-                    if (tenantsource.Count < 10)
+                    if (newssource.Count < 10)
                     {
                         NextPageButton.IsEnabled = false;
                     }
