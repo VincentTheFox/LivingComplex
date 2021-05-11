@@ -125,9 +125,14 @@
                                     <RowDefinition Height="0.3*"/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <Label x:Name="Balance_label"/>
-                                <Label x:Name="Arrear_label"/>
+                                <TextBlock x:Name="AddressbOX" TextWrapping="Wrap"/>
                             </Grid>
+                            <StackPanel Grid.Row="1" Grid.Column="0">
+                                <TextBlock x:Name="FlatID"/>
+                               
+                                <TextBlock x:Name="AmountTenant"/>
+                                
+                            </StackPanel>
                             <ListView x:Name="TenantView" Grid.Column="1"
                                       MouseDoubleClick="TenantView_MouseDoubleClick">
                                 <ListView.View>
@@ -153,6 +158,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="0.1*"/>
                             </Grid.ColumnDefinitions>
+                            
                             <ListView x:Name="OffersList" Grid.Column="1" Background="#f4f4f4" MouseDoubleClick="OffersList_MouseDoubleClick">
                                 <ListView.View>
                                     <GridView>

@@ -47,6 +47,7 @@ namespace LivingComplex.Windows
             var service = CN.c.Service.Select(i => i.ServiceName).ToList();
             service.Insert(0, "Все услуги");
             CreateService_ComboBox.ItemsSource = service;
+            
             Update();
         }
         /// <summary>
@@ -61,6 +62,13 @@ namespace LivingComplex.Windows
             /// <summary>
             /// Getting address for label
             /// <summary>
+
+            IEnumerable<int> amount =
+                from Tenants in CN.c.Tenants
+                where Tenants.FlatID == Tenant.FlatID
+                select Tenants.idTenant;
+            int amounttenants = amount.Count();
+          
             IEnumerable<int> FlatNumberquery =
              from Flats in CN.c.Flats
              where Flats.idFlat == Tenant.FlatID
@@ -93,9 +101,11 @@ namespace LivingComplex.Windows
             tenantsourseCollection = tenantsourseCollection.Where(i => i.FlatID == Tenant.FlatID).ToList();
             newssource = newssource.OrderByDescending(i => i.idNews).ToList();
 
+            AmountTenant.Text = "Количество жителей: " + amounttenants.ToString();
             NewsList.ItemsSource = newssource;
             TenantView.ItemsSource = tenantsourseCollection;
             OffersList.ItemsSource = offersCollection;
+            FlatID.Text = "Номер квартиры: " + Tenant.FlatID.ToString();
             
         }
         

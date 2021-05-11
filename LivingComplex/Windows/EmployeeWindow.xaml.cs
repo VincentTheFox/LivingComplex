@@ -111,7 +111,7 @@ namespace LivingComplex.Windows
                 tenlogtab.Visibility = Visibility.Visible;
             }
             else
-            {
+            { 
                 employeelogtab.Visibility = Visibility.Hidden;
                 tenlogtab.Visibility = Visibility.Hidden;
             }
