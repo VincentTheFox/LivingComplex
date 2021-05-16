@@ -41,7 +41,7 @@ namespace LivingComplex.Windows
                 where Employers.idEmployee == news.CreatorId
                 select Employers.Patronymic;
             string pname = patrn.First();
-            NewsTitle.Content = news.NewsTitle;
+            NewsTitle.Text = news.NewsTitle;
             NewsText.Text = news.NewsText;
             
             NewsCreator.Content = lname + " " + fname + " " + pname;
