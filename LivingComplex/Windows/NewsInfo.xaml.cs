@@ -26,25 +26,12 @@ namespace LivingComplex.Windows
         public NewsInfo(News news)
         {
             InitializeComponent();
-            IEnumerable<string> firstn =
-                from Employers in CN.c.Employers
-                where Employers.idEmployee == news.CreatorId
-                select Employers.FirstName;
-            string fname = firstn.First();
-            IEnumerable<string> lastn =
-                from Employers in CN.c.Employers
-                where Employers.idEmployee == news.CreatorId
-                select Employers.LastName;
-            string lname = lastn.First();
-            IEnumerable<string> patrn =
-                from Employers in CN.c.Employers
-                where Employers.idEmployee == news.CreatorId
-                select Employers.Patronymic;
-            string pname = patrn.First();
+            
+            string pname = news.Employers.LastName + " " + news.Employers.FirstName + " " + news.Employers.Patronymic;
             NewsTitle.Text = news.NewsTitle;
             NewsText.Text = news.NewsText;
-            
-            NewsCreator.Content = lname + " " + fname + " " + pname;
+
+            NewsCreator.Content = pname;
             if (news.NewsPhoto != null)
             {
                 using (MemoryStream stream = new MemoryStream(CN.c.News.Where(i => i.idNews == news.idNews).Select(i => i.NewsPhoto).FirstOrDefault()))

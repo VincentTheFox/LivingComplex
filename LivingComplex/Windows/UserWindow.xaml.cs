@@ -26,19 +26,8 @@ namespace LivingComplex.Windows
             Loginlabel.Content = employer.Login;
             Passowrdlabel.Content = employer.Password;
             Rolelabel.Content = employer.Roles.RoleName;
-            IEnumerable<string> firstNamequery =
-                from Employers in CN.c.Employers
-                where Employers.idEmployee == employer.idEmployee
-                select Employers.FirstName;
-            IEnumerable<string> lastNamequery =
-                from Employers in CN.c.Employers
-                where Employers.idEmployee == employer.idEmployee
-                select Employers.LastName;
-            IEnumerable<string> patrNamequery =
-                from Employers in CN.c.Employers
-                where Employers.idEmployee == employer.idEmployee
-                select Employers.Patronymic;
-            string fullname = lastNamequery.First() + " " + firstNamequery.First() + " " + patrNamequery.First();
+            
+            string fullname = employer.Employers.LastName + " " + employer.Employers.FirstName + " " + employer.Employers.Patronymic;
             FullNameEmplabel.Content = fullname;
             idEmpLabel.Content = employer.idEmployee;
         }

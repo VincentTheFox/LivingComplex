@@ -21,5 +21,6 @@ namespace LivingComplex.Entity
         public int RoleID { get; set; }
     
         public virtual Roles Roles { get; set; }
+        public virtual Employers Employers { get; set; }
     }
 }

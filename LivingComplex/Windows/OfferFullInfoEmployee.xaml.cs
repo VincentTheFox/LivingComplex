@@ -27,29 +27,14 @@ namespace LivingComplex.Windows
         {
             Offfer = offer;
             InitializeComponent();
-            IEnumerable<string> ShortDescriptionQuery =
-                from Offers in CN.c.Offers
-                where Offers.idOffer == offer.idOffer
-                select Offers.ShortDescription;
-            string ShortDescription = ShortDescriptionQuery.First();
-            ShortDescription_text.Text = " " + ShortDescription;
-            IEnumerable<string> ServiceStatusQuery =
-                from Offers in CN.c.Offers
-                join TaskStatus in CN.c.TaskStatus on Offers.StatusID equals TaskStatus.idTaskStatus
-                where Offers.idOffer == offer.idOffer
-                select TaskStatus.TaskStatusName;
-            OfferStatus.Content = "Статус заявки: " + ServiceStatusQuery.First();
-            IEnumerable<string> ServiceTypeQuery =
-                from Offers in CN.c.Offers
-                join Service in CN.c.Service on Offers.Service equals Service.idService
-                where Offers.idOffer == offer.idOffer
-                select Service.ServiceName;
-            ServiceType.Content = "Услуга: " + ServiceTypeQuery.First();
-            IEnumerable<DateTime> DateTimeQuery =
-                from Offers in CN.c.Offers
-                where Offers.idOffer == offer.idOffer
-                select Offers.CreateDate;
-            CreateData.Content = "Дата заявки: " + DateTimeQuery.First().ToString();
+           
+            ShortDescription_text.Text = " " + offer.ShortDescription;
+            
+            OfferStatus.Content = "Статус заявки: " + offer.TaskStatus.TaskStatusName;
+            
+            ServiceType.Content = "Услуга: " + offer.Service1.ServiceName;
+            
+            CreateData.Content = "Дата заявки: " + offer.CreationDate;
             Address.Content = GetAddress(offer);
             var statuses = CN.c.TaskStatus.Select(i => i.TaskStatusName).ToList();
             statuses.Insert(0, "Не менять");

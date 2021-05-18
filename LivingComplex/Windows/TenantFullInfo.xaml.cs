@@ -26,24 +26,14 @@ namespace LivingComplex.Windows
             InitializeComponent();
             string bddate = tenant.BirthdayDate.ToString();
             string bd = bddate.Substring(0, 10);
-            IEnumerable<string> gendernamequery =
-                from Gender in CN.c.Gender
-                where Gender.idGender == tenant.GenderID
-                select Gender.GenderName;
-            string GenderNameInfo = gendernamequery.First();
-
-            IEnumerable<string> tenantstatusquery =
-                from TenantStatus in CN.c.TenantStatus
-                where TenantStatus.idStatusTenant == tenant.TenantStatusID
-                select TenantStatus.StatusName;
-            string StatusNameInfo = tenantstatusquery.First();
+           
             FullName_label.Content = tenant.FullName;
             BirthDayDate_label.Text = " " + bd;
-            Gender_label.Content = GenderNameInfo;
+            Gender_label.Content = tenant.Gender.GenderName;
             Email_label.Content = tenant.Email;
             Phone_label.Content = tenant.Phone;
             Age_label.Content = tenant.Age + " лет";
-            TenantStatusLabel_label.Content = StatusNameInfo;
+            TenantStatusLabel_label.Content =tenant.TenantStatus.StatusName;
             INN_label.Content = tenant.INN;
             Snils_label.Content = tenant.SNILS;
             PassportNumber.Content = tenant.PassportSerial + " " + tenant.PassportNumber;

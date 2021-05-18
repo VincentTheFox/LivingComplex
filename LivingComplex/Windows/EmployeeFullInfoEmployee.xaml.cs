@@ -36,32 +36,19 @@ namespace LivingComplex.Windows
         private void Update()
         {
 
-            string bddate = employers.BirthdayDate.ToString();
-            string wsdate = employers.WorkingStartDate.ToString();
-            string ws = wsdate.Substring(0, 10);
-            string bd = bddate.Substring(0, 10);
-            IEnumerable<string> gendernamequery =
-                from Gender in CN.c.Gender
-                where Gender.idGender == employers.Gender
-                select Gender.GenderName;
-            string GenderNameInfo = gendernamequery.First();
-            IEnumerable<string> employeepostquery =
-                from EmployeePost in CN.c.EmployeePost
-                where EmployeePost.idEmployeePost == employers.EmployeePostID
-                select EmployeePost.EmployeePostName;
-            string EmployeePostName = employeepostquery.First();
+            
             EmployeeID.Text = employers.idEmployee.ToString();
             FullName_label.Text = employers.EmployeeFullName;
-            Gender_label.Text = GenderNameInfo;
+            Gender_label.Text = employers.Gender1.GenderName;
             Email_label.Text = employers.Email;
             Phone_label.Text = employers.Phone;
             Age_label.Text = employers.Age.ToString();
             INN_label.Text = employers.INN.ToString();
             Snils_label.Text = employers.SNILS.ToString();
             PostBox.SelectedItem = employers.EmployeePostID;
-            Post_Label.Content = EmployeePostName;
-            WorkingStartDate.Text = ws;
-            BirthdayDate_label.Text = bd;
+            Post_Label.Content = employers.EmployeePost.EmployeePostName;
+            WorkingStartDate.Text = employers.WorkDate;
+            BirthdayDate_label.Text = employers.BirthDate;
             RateFactor.Content = employers.RateFactor.RateFactor1.ToString();
             ContractNumber.Text = employers.ContractNumber;
             PassportNumber.Text = employers.PassportNumber.ToString();

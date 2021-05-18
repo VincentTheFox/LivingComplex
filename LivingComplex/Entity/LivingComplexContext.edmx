@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище DiplomKuzinModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище DiplomKuzinModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="EmployeeLogin">
           <Key>
             <PropertyRef Name="idEmployeeLogin" />
@@ -185,6 +185,18 @@
           <Property Name="idStatusTenant" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StatusName" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <Association Name="FK_EmployeeLogin_Employers">
+          <End Role="Employers" Type="Self.Employers" Multiplicity="1" />
+          <End Role="EmployeeLogin" Type="Self.EmployeeLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employers">
+              <PropertyRef Name="idEmployee" />
+            </Principal>
+            <Dependent Role="EmployeeLogin">
+              <PropertyRef Name="idEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EmployeeLogin_Roles1">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="EmployeeLogin" Type="Self.EmployeeLogin" Multiplicity="*" />
@@ -427,6 +439,10 @@
           <EntitySet Name="TenantLogin" EntityType="Self.TenantLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tenants" EntityType="Self.Tenants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TenantStatus" EntityType="Self.TenantStatus" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EmployeeLogin_Employers" Association="Self.FK_EmployeeLogin_Employers">
+            <End Role="Employers" EntitySet="Employers" />
+            <End Role="EmployeeLogin" EntitySet="EmployeeLogin" />
+          </AssociationSet>
           <AssociationSet Name="FK_EmployeeLogin_Roles1" Association="Self.FK_EmployeeLogin_Roles1">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="EmployeeLogin" EntitySet="EmployeeLogin" />
@@ -492,8 +508,7 @@
             <End Role="Tenants" EntitySet="Tenants" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DiplomKuzinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -507,6 +522,7 @@
           <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RoleID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_EmployeeLogin_Roles1" FromRole="EmployeeLogin" ToRole="Roles" />
+          <NavigationProperty Name="Employers" Relationship="DiplomKuzinModel.FK_EmployeeLogin_Employers" FromRole="EmployeeLogin" ToRole="Employers" />
         </EntityType>
         <EntityType Name="EmployeePost">
           <Key>
@@ -542,6 +558,7 @@
           <NavigationProperty Name="Gender1" Relationship="Self.FK_Employers_Gender1" FromRole="Employers" ToRole="Gender" />
           <NavigationProperty Name="RateFactor" Relationship="Self.FK_Employers_RateFactor" FromRole="Employers" ToRole="RateFactor" />
           <NavigationProperty Name="News" Relationship="Self.FK_News_Employers" FromRole="Employers" ToRole="News" />
+          <NavigationProperty Name="EmployeeLogin" Relationship="DiplomKuzinModel.FK_EmployeeLogin_Employers" FromRole="Employers" ToRole="EmployeeLogin" />
         </EntityType>
         <EntityType Name="Flats">
           <Key>
@@ -1014,6 +1031,10 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="FK_EmployeeLogin_Employers" Association="DiplomKuzinModel.FK_EmployeeLogin_Employers">
+            <End Role="Employers" EntitySet="Employers" />
+            <End Role="EmployeeLogin" EntitySet="EmployeeLogin" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1026,6 +1047,18 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <Association Name="FK_EmployeeLogin_Employers">
+          <End Type="DiplomKuzinModel.Employers" Role="Employers" Multiplicity="1" />
+          <End Type="DiplomKuzinModel.EmployeeLogin" Role="EmployeeLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employers">
+              <PropertyRef Name="idEmployee" />
+            </Principal>
+            <Dependent Role="EmployeeLogin">
+              <PropertyRef Name="idEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

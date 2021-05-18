@@ -32,26 +32,15 @@ namespace LivingComplex.Windows
         }
         private void Update()
         {
-            string bddate = tenant.BirthdayDate.ToString();
-            string bd = bddate.Substring(0, 10);
-            IEnumerable<string> gendernamequery =
-                from Gender in CN.c.Gender
-                where Gender.idGender == tenant.GenderID
-                select Gender.GenderName;
-            string GenderNameInfo = gendernamequery.First();
-
-            IEnumerable<string> tenantstatusquery =
-                from TenantStatus in CN.c.TenantStatus
-                where TenantStatus.idStatusTenant == tenant.TenantStatusID
-                select TenantStatus.StatusName;
-            string StatusNameInfo = tenantstatusquery.First();
+            
+            
             FullName_label.Text = tenant.FullName;
-            BirthDayDate_label.Text = " " + bd;
-            Gender_label.Text = GenderNameInfo;
+            BirthDayDate_label.Text = " " + tenant.Birthday;
+            Gender_label.Text = tenant.Gender.GenderName;
             Email_label.Text = tenant.Email;
             Phone_label.Text = tenant.Phone;
             Age_label.Text = tenant.Age.ToString();
-            TenantStatusLabel_label.Content = StatusNameInfo;
+            TenantStatusLabel_label.Content = tenant.TenantStatus.StatusName;
             INN_label.Text = tenant.INN.ToString();
             Snils_label.Text = tenant.SNILS.ToString();
             PassportNumber.Text = tenant.PassportNumber.ToString();
